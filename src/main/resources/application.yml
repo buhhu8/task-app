@@ -1,0 +1,12 @@
+server.port: 5697
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task-app
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 0280829Denis
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+
