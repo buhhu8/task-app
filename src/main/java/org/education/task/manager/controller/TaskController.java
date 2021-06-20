@@ -1,6 +1,7 @@
 package org.education.task.manager.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.education.task.manager.model.dto.TaskDto;
 import org.education.task.manager.service.TaskService;
 import org.springframework.http.HttpStatus;
@@ -31,14 +32,16 @@ public class TaskController {
         return taskService.deleteTaskById(id);
     }
 
+    @SneakyThrows
     @PostMapping("/insert")
-    public ResponseEntity isnertIntoTask(@RequestBody TaskDto taskDto) {
-        taskService.insertTask(taskDto);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity insertIntoTask(@ModelAttribute TaskDto taskDto) {
+        String filePath = taskService.insertTask(taskDto);
+        return new ResponseEntity(filePath, HttpStatus.OK);
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity updateTaskById(@PathVariable Integer id, @RequestBody TaskDto taskDto) {
+    public ResponseEntity updateTaskById(@PathVariable Integer id, @ModelAttribute TaskDto taskDto) {
         taskService.updateTaskById(id, taskDto);
         return new ResponseEntity(HttpStatus.OK);
     }

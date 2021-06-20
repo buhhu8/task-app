@@ -10,6 +10,7 @@ public interface TaskService {
     TaskDto getById(Integer id);
     Collection<TaskDto> getAll();
     ResponseEntity deleteTaskById(Integer id);
-    void insertTask(TaskDto dto);
+    String insertTask(TaskDto dto);
     void updateTaskById(Integer id, TaskDto dto);
+    Integer getId(TaskDto dto);
 }
