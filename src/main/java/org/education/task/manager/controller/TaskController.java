@@ -17,6 +17,11 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    @GetMapping
+    public String greetingFromDocker(){
+        return "Hello";
+    }
+
     @GetMapping("/{id}")
     public TaskDto getTaskById(@PathVariable Integer id) {
         return taskService.getById(id);
